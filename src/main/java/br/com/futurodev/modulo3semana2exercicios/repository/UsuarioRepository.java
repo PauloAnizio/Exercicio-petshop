@@ -6,20 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class UsuarioRepository {
-
     private static int indice = 1;
     private static List<Usuario> usuarios = new ArrayList<>();
-
     private int gerarId() {
         return indice++;
     }
     private List<Usuario> getUsuarios() {
-        // Sempre cria um usuário caso não exista nenhum
         if (usuarios.size() == 0) {
-
             List<String> permissoes = new ArrayList<>();
             permissoes.add("ADMIN");
-
             usuarios.add(Usuario.builder()
                     .id(gerarId())
                     .nome("admin")
@@ -30,7 +25,6 @@ public class UsuarioRepository {
         }
         return usuarios;
     }
-
     public Usuario buscarPorId(Integer id) {
         if (id == null)
             return null;
@@ -41,7 +35,6 @@ public class UsuarioRepository {
         }
         return null;
     }
-
     public Usuario buscarPorLogin(String login) {
         if (login == null || login.isEmpty())
             return null;
